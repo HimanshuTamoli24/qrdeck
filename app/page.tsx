@@ -1,19 +1,33 @@
-import Image from "next/image";
+"use client";
+import { useSession,signOut } from "next-auth/react";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center font-sans gap-4 text-center px-4">
-      <h1 className="text-2xl font-bold">
-        mm… stalking my GitHub, huh? 😏
-      </h1>
-      <p>
-        well, I mostly love reading emails.  
-        <br />
-        hit me up: <a href="mailto:himanshutamoli2005@gmail.com" className="underline text-blue-500">himanshutamoli2005@gmail.com</a>
-      </p>
-      <p className="mt-4 italic text-gray-500">
-        btw… cooking something cool. stay tuned, it’s gonna drop soon 🚀
-      </p>
-    </div>
-  );
+export default function HomePage() {
+    const { data: session, status } = useSession();
+
+    if (status === "loading") {
+        return (
+            <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-yellow-200">
+                Loading session...
+            </main>
+        );
+    }
+
+    if (!session) {
+        return (
+            <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-blue-200">
+                <p>Please log in</p>
+                <a href="/auth">Login</a>
+            </main>
+        );
+    }
+
+    return (
+        <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-red-200">
+            <h1 className="text-4xl font-bold">Welcome to the Home Page</h1>
+            {session.user?.name && (
+                <p className="mt-4 text-2xl">Hello, {session.user.name}!</p>
+            )}
+            <span onClick={() => signOut()}>log out</span>
+        </main>
+    );
 }
