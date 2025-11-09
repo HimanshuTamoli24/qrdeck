@@ -1,11 +1,17 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
-const qrSchema = new Schema({
-    uniqueLink: { type: String, required: true, unique: true },
-    qrCodeImage: { type: String, required: true },
-    owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
-},
+const qrSchema = new Schema(
+    {
+        imageKitUrl: { type: String, required: true },
+        uniqueLink: { type: String, required: true, unique: true },
+        qrCode: { type: String, required: true },
+        textData: { type: String },
+        owner: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    },
     { timestamps: true }
 );
 
-export const QR: Model<any> = mongoose.models.QR || mongoose.model("QR", qrSchema);
+// Prevent OverwriteModelError during hot reloads
+export const QR = models.QR || model("QR", qrSchema);
+
+
