@@ -9,6 +9,9 @@ import {
     upload,
 } from "@imagekit/next";
 import { useRef, useState } from "react";
+import HeroSection from "@/components/ui/custom/hero-section";
+import WorkingFlow from "@/components/ui/custom/working-flow-section";
+import TestimonialSection from "@/components/ui/custom/testimonial-section";
 
 export default function HomePage() {
     const { data: session } = useSession();
@@ -88,42 +91,48 @@ export default function HomePage() {
             else console.error("Unexpected error:", error);
         }
     };
- 
+
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-red-200">
-            <h1 className="text-4xl font-bold">Welcome to the Home Page</h1>
-            <p className="mt-4 text-2xl">Hello, {session.user?.name}!</p>
 
-            <span onClick={() => signOut()} className="cursor-pointer underline">
-                Log out
-            </span>
+        <section>
+            <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-red-200">
+                <h1 className="text-4xl font-bold">Welcome to the Home Page</h1>
+                <p className="mt-4 text-2xl">Hello, {session.user?.name}!</p>
 
-            {/* Show preview before upload */}
-            {previewUrl && (
-                <img
-                    src={previewUrl}
-                    alt="Preview"
-                    className="w-64 h-64 object-cover rounded-lg shadow-md mt-4"
-                />
-            )}
+                <span onClick={() => signOut()} className="cursor-pointer underline">
+                    Log out
+                </span>
 
-            {/* Show final uploaded image */}
-            {uploadedUrl && (
-                <Image
-                    src={uploadedUrl}
-                    urlEndpoint="https://ik.imagekit.io/qrdeck/"
-                    width={500}
-                    height={500}
-                    alt="Uploaded Image"
-                    className="mt-6"
-                />
-            )}
+                {/* Show preview before upload */}
+                {previewUrl && (
+                    <img
+                        src={previewUrl}
+                        alt="Preview"
+                        className="w-64 h-64 object-cover rounded-lg shadow-md mt-4"
+                    />
+                )}
 
-            <input type="file" ref={fileRef} onChange={handleFileChange} />
-            <button type="button" onClick={handleUpload} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">
-                Upload file
-            </button>
-        </main>
+                {/* Show final uploaded image */}
+                {uploadedUrl && (
+                    <Image
+                        src={uploadedUrl}
+                        urlEndpoint="https://ik.imagekit.io/qrdeck/"
+                        width={500}
+                        height={500}
+                        alt="Uploaded Image"
+                        className="mt-6"
+                    />
+                )}
+
+                <input type="file" ref={fileRef} onChange={handleFileChange} />
+                <button type="button" onClick={handleUpload} className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">
+                    Upload file
+                </button>
+            </main>
+            <HeroSection />
+            <WorkingFlow />
+            <TestimonialSection />
+        </section>
     );
 }
