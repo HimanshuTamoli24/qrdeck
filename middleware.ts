@@ -5,11 +5,11 @@ export default withAuth(
   function middleware(req) {
     const token = req.nextauth.token;
     
-    if (req.nextUrl.pathname.startsWith("/dashboard")) {
-      if (token?.role !== "admin") {
-        return NextResponse.redirect(new URL("/", req.url));
-      }
-    }
+    // if (req.nextUrl.pathname.startsWith("/dashboard")) {
+    //   if (token?.role !== "admin") {
+    //     return NextResponse.redirect(new URL("/", req.url));
+    //   }
+    // }
     console.log("token",token)
     return NextResponse.next(); 
   },

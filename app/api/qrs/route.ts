@@ -6,6 +6,8 @@ import imagekit from "@/lib/imagekit";
 
 export async function POST(request: Request) {
   try {
+    await connectDB();  // ALWAYS FIRST
+
     const body = await request.json();
     const { url, owner, textData } = body;
 
@@ -13,27 +15,30 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await connectDB();
+    // generate QR PNG buffer
     const buffer = await QRCode.toBuffer(url, {
       type: "png",
       errorCorrectionLevel: "H",
     });
+
+    // upload to imagekit
     const uploaded = await imagekit.upload({
       file: buffer,
       fileName: `qr-${Date.now()}.png`,
     });
 
+    // store in DB
     const qr = await QR.create({
-      uniqueLink: Math.random().toString(36).substring(2, 15),
-      imageKitUrl: url,
-      qrCode: await uploaded.url,
-      textData: textData || "",
       owner,
+      uniqueLink: Math.random().toString(36).substring(2, 15),
+      qrCode: uploaded.url,
+      imageKitUrl: uploaded.url,
+      textData: textData || "",
     });
 
     return NextResponse.json(qr, { status: 201 });
   } catch (err: any) {
     console.error("/api/qrs error:", err);
-    return NextResponse.json({ error: err?.message || "Internal error" }, { status: 500 });
+    return NextResponse.json({ error: err.message || "Internal error" }, { status: 500 });
   }
 }

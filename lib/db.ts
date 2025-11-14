@@ -1,3 +1,4 @@
+import env from "@/config/env";
 import mongoose from "mongoose";
 
 let isConnected = false;
@@ -5,7 +6,7 @@ let isConnected = false;
 export async function connectDB() {
     if (isConnected) return;
     try {
-        await mongoose.connect(process.env.MONGODB_URI!);
+        await mongoose.connect(env.MONGODB_URI);
         isConnected = true;
         console.log(" MongoDB connected");
     } catch (error) {
