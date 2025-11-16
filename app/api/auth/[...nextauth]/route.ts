@@ -15,6 +15,7 @@ const handler = NextAuth({
     async signIn({ user }) {
       await connectDB();
       const existingUser = await User.findOne({ email: user.email });
+      console.log("Signing in user:", user);
       if (!existingUser) {
         const newUser = new User({
           name: user.name,
@@ -29,7 +30,7 @@ const handler = NextAuth({
       await connectDB();
       if (user) {
         const dbUser = await User.findOne({ email: user.email });
-        token.role = dbUser?.role || "user";
+        token.role = dbUser?.isAdmin ? "admin" : "user";
         token.id = dbUser?._id;
       }
       return token;
