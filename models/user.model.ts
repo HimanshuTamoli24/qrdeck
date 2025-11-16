@@ -1,12 +1,26 @@
-import mongoose, { Schema, Model } from "mongoose";
-const userSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    profileImage: { type: String },
-    isPremimum: { type: Boolean, default: false },
-    isAdmin: { type: Boolean, default: false },
-    qrs: [{ type: Schema.Types.ObjectId, ref: "QR" }],
-}, {
-    timestamps: true,
-})
-export const User: Model<any> = mongoose.models.User || mongoose.model("User", userSchema);
+import mongoose, { Schema, Model, Types } from "mongoose";
+
+const userSchema = new Schema(
+    {
+        name: { type: String, trim: true },
+
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            trim: true
+        },
+
+        profileImage: { type: String },
+
+        isPremium: { type: Boolean, default: false },
+        isAdmin: { type: Boolean, default: false },
+
+        qrs: [{ type: Types.ObjectId, ref: "QR" }],
+    },
+    { timestamps: true }
+);
+
+export const User: Model<any> =
+    mongoose.models.User || mongoose.model("User", userSchema);
