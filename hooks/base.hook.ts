@@ -1,6 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { baseService } from "@/services/base.service";
 
+// Image upload auth hook
+export const useImagekitAuthCheck = () => {
+    return useQuery({
+        queryKey: ["imagekitAuthCheck"],
+        queryFn: () => baseService.imagekitAuthCheck(),
+    });
+}
+
 // Get all QR codes
 export const useGetAllQr = () => {
     return useQuery({

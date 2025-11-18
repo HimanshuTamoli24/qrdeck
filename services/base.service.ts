@@ -1,4 +1,4 @@
-import  { AxiosInstance } from "axios";
+import { AxiosInstance } from "axios";
 import axiosInstance from "@/lib/axiosinstance";
 
 export class BaseService {
@@ -7,7 +7,13 @@ export class BaseService {
     constructor() {
         this.axios = axiosInstance
     }
+    //image related methods
+    async imagekitAuthCheck() {
+        const { data } = await this.axios.get("/upload-auth");
+        return data;
+    }
 
+    // QR Code related methods
     async createQr(payload: any) {
         const { data } = await this.axios.post("/qr", payload);
         return data;
