@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/provider/AuthProvider";
-import QueryClientProvider from "@/provider/queryClientProvider";
+import QueryClientProvider from "@/provider/QueryClientProvider";
+import Header from "@/components/ui/custom/header";
+import { ThemeProviders } from "@/provider/ThemeProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +32,10 @@ export default function RootLayout({
       >
         <QueryClientProvider>
           <AuthProvider>
+            <ThemeProviders>
+            <Header />
             {children}
+            </ThemeProviders>
           </AuthProvider>
         </QueryClientProvider>
 
