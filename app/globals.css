@@ -134,3 +134,13 @@
       'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
   }
 }
+
+::selection {
+  background: var(--primary);
+  color: black
+}
+
+.dark ::selection {
+  background: color-mix(in srgb, var(--primary), transparent 60%);
+  color: white;
+}
