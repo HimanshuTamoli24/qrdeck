@@ -3,6 +3,9 @@ import { useSession } from "next-auth/react";
 import HeroSection from "@/components/custom/hero-section";
 import WorkingFlow from "@/components/custom/working-flow-section";
 import TestimonialSection from "@/components/custom/testimonial-section";
+import FAQ from "@/components/custom/FAQ";
+import Footer from "@/components/custom/footer";
+import Contact from "@/components/custom/contact";
 
 export default function HomePage() {
     const { data: session } = useSession();
@@ -20,6 +23,9 @@ export default function HomePage() {
             <HeroSection />
             <WorkingFlow />
             <TestimonialSection />
+            <Contact />
+            <FAQ />
+            <Footer />
         </section>
     );
 }

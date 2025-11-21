@@ -1,6 +1,6 @@
 "use client";
 
-import DragAndDrop from "@/components/custom/draganddrop";
+import DragAndDrop from "@/components/custom/drag-drop";
 import { Button } from "@/components/ui/button";
 import { ImageKitAbortError, upload } from "@imagekit/next";
 import { X } from "lucide-react";
