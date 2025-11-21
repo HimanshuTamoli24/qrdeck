@@ -18,7 +18,7 @@ export default function HeroSection() {
 
           <div className="flex items-center justify-center sm:justify-start w-full mb-10">
             <AnimatedTooltip items={people} />
-            <span className="ml-5 text-xl text-primary">120+ Users</span>
+            <span className="ml-5 text-xl text-primary">{people.length}+ Paid Users</span>
           </div>
 
           <h3 className="md:text-5xl sm:text-4xl text-xl font-bold mb-4 max-w-xl">
