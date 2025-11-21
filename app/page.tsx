@@ -1,8 +1,8 @@
 "use client";
 import { useSession } from "next-auth/react";
-import HeroSection from "@/components/ui/custom/hero-section";
-import WorkingFlow from "@/components/ui/custom/working-flow-section";
-import TestimonialSection from "@/components/ui/custom/testimonial-section";
+import HeroSection from "@/components/custom/hero-section";
+import WorkingFlow from "@/components/custom/working-flow-section";
+import TestimonialSection from "@/components/custom/testimonial-section";
 
 export default function HomePage() {
     const { data: session } = useSession();

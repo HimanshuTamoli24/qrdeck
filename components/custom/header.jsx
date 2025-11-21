@@ -4,7 +4,7 @@ import { Moon, Rows3, ScanQrCode, Sun } from "lucide-react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import { signOut, useSession } from "next-auth/react"
-import { Button } from "../button"
+import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { useIsMobile } from "@/lib/use-mobile"
 import {
@@ -14,7 +14,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu"
 
-import { Select, SelectContent, SelectItem, SelectTrigger } from "../select"
+import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select"
 import { useState } from "react"
 
 export default function Header() {

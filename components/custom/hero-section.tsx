@@ -3,8 +3,8 @@
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { people } from "@/config/constant"
-import { AnimatedTooltip } from "../animated-tooltip"
-import { Button } from "../button"
+import { AnimatedTooltip } from "../ui/animated-tooltip"
+import { Button } from "../ui/button"
 
 export default function HeroSection() {
   const router = useRouter()
