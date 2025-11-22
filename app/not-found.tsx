@@ -20,18 +20,18 @@ export default function NotFound() {
         className="max-w-6xl w-full grid grid-cols-1 sm:grid-cols-2  items-center"
       >
         <div className="relative  flex justify-center items-center">
-          <div className=" w-full h-200 relative mx-auto">
+          <div className=" w-sm h-96 relative mx-auto">
             <Image
-              src="/404.png"
+              src="/images/not-found.png"
               alt="404 Death Page"
               fill
               priority
-              className="object-contain size-60 min-w-xl sm:min-w-2xl md:min-w-4xl h-full z-0"
+              className="object-contain size-60  z-0"
             />
           </div>
 
-          <div className="absolute text-xs overflow-hidden top-55 right-20 max-w-40  font-extrabold 
-            text-primary-foreground z-30 px-4 py-3 text-pretty "> 
+          <div className="absolute text-[9px] overflow-hidden top-5 right-20 max-w-40  font- 
+            text-primary-foreground z-30 px-4 py-3 text-pretty ">
             {devName
               ? `Developer ${devName} has been officially summoned by Death.`
               : "Type a developer name... judgment awaits."}
@@ -56,7 +56,7 @@ export default function NotFound() {
               </Button>
             </Link>
 
-            <div className="flex w-full sm:w-auto z-40">
+            <div className="flex w-full sm:w-auto z-999">
               <Input
                 value={devName}
                 onChange={(e) => setDevName(e.target.value)}

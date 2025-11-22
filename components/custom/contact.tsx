@@ -29,16 +29,16 @@ export default function Contact() {
 
     return (
         <section className="w-full min-h-screen flex items-center justify-center bg -amber-300">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-2xl overflow-hidden max-w-4xl w-full">
+            <div className="flex flex-col sm:flex-row  rounded-2xl overflow-hidden max-w-3xl w-full ">
 
                 {/* LEFT IMAGE */}
-                <div className="relative h-64 md:h-auto overflow-hidden">
+                <div className="relative w-full h-64 md:h-auto overflow-hidden ">
 
                     <Image
-                        src="/contact.png"
+                        src="/images/01_contact.png"
                         alt="Contact"
                         fill
-                        className="object-cover"
+                        className=" aspect-square "
                         priority
                     />
 
@@ -48,7 +48,7 @@ export default function Contact() {
 
 
                 {/* RIGHT FORM */}
-                <div className="p-6 flex items-center inset-0 bg-gradient-to-r from-background via-background/70 to-transparent">
+                <div className="p-6 w-full flex items-center inset-0 bg-gradient-to-r from-background via-background/70 to-transparent">
                     <Form {...form}>
                         <form
                             className="space-y-4 w-full"

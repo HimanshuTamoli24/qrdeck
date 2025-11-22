@@ -17,7 +17,7 @@ const PLANS = [
   },
   {
     name: "Monthly Pro",
-    price: "₹4,99",
+    price: "₹499",
     duration: "per month",
     highlight: true,
     description: "Unlimited power for serious creators and growing businesses.",
@@ -32,7 +32,7 @@ const PLANS = [
 export default function PricingPage() {
   return (
     <section className="w-full py-20 flex justify-center items-center">
-      <div className="max-w-5xl w-full px-6">
+      <div className="max-w-5xl w-full px-6 " >
 
         {/* Header */}
         <div className="text-center mb-14">
@@ -44,8 +44,8 @@ export default function PricingPage() {
 
         {/* Plans */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="relative w-sm ">
-            <Image src="/plan.png" alt="Plan Image" fill className="object-cover absolute" />
+          <div className="relative  ">
+            <Image src="/images/01_plan.png" alt="Plan Image" fill className=" absolute" />
           </div>
           {PLANS.map((plan) => (
             <Card
