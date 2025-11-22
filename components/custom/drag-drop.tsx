@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FileUploader } from "react-drag-drop-files";
 
-const fileTypes = ["JPG", "PNG", "GIF"];
+// const fileTypes = ["JPG", "PNG", "GIF"];
 
 export default function DragAndDrop({setPreviewUrl}: {setPreviewUrl: (url: string | null) => void}) {
   const [file, setFile] = useState<File | null>(null);
@@ -21,7 +20,7 @@ export default function DragAndDrop({setPreviewUrl}: {setPreviewUrl: (url: strin
     setPreviewUrl(url);
 
     return () => URL.revokeObjectURL(url); 
-  }, [file]);
+  }, [file, setPreviewUrl]);
 
   return (
     <div className="flex flex-col w-full  min-h-52 h-full justify-center items-center gap-4">

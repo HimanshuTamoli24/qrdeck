@@ -2,9 +2,6 @@ import { NextResponse, NextRequest } from "next/server";
 import { connectDB } from "@/lib/db";
 import { QR } from "@/models/qr.model";
 import { QRUpdateSchema } from "@/schemas/backend";
-interface Params {
-  id: string;
-}
 
 // get request to fetch a qr code by id
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {

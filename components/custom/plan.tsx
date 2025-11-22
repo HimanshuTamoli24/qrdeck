@@ -2,38 +2,33 @@ import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
-
 const PLANS = [
   {
-    name: "5 Week Plan",
-    price: "₹499",
-    duration: "per 5 weeks",
+    name: "Free Starter",
+    price: "₹0",
+    duration: "Lifetime",
     highlight: false,
-    description: "Perfect for short-term testing and feature exploration.",
+    description: "Try QR Deck with essential features and limited access.",
     features: [
-      "Up to 50 QR Codes",
-      "Basic Analytics",
-      "Custom Branding",
-      "Email Support",
-      "Limited Scan History",
+      "2 QR Codes Only",
+      "Basic Scan Insights",
+      "Standard Customisation",
     ],
   },
   {
-    name: "Yearly Plan",
-    price: "₹4,999",
-    duration: "per year",
+    name: "Monthly Pro",
+    price: "₹4,99",
+    duration: "per month",
     highlight: true,
-    description: "Best value for long-term creators and businesses.",
+    description: "Unlimited power for serious creators and growing businesses.",
     features: [
       "Unlimited QR Codes",
       "Advanced Analytics",
-      "Priority Support",
       "Custom Domains",
-      "Full Scan History",
+      "Complete Scan History",
     ],
   },
 ];
-
 export default function PricingPage() {
   return (
     <section className="w-full py-20 flex justify-center items-center">
@@ -49,9 +44,9 @@ export default function PricingPage() {
 
         {/* Plans */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="relative w-sm ">
-                <Image src="/plan.png" alt="Plan Image" fill className="object-cover absolute" />
-            </div>
+          <div className="relative w-sm ">
+            <Image src="/plan.png" alt="Plan Image" fill className="object-cover absolute" />
+          </div>
           {PLANS.map((plan) => (
             <Card
               key={plan.name}
@@ -85,9 +80,8 @@ export default function PricingPage() {
                 </ul>
 
                 <Button
-                  className={`w-full ${
-                    plan.highlight ? "" : "variant-outline"
-                  }`}
+                  className={`w-full ${plan.highlight ? "" : "variant-outline"
+                    }`}
                 >
                   Choose Plan
                 </Button>

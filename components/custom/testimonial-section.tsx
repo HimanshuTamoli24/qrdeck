@@ -43,10 +43,19 @@ interface CardProps {
     title: string;
     description: string;
     link: string;
+    id: string | number;
 }
+function CardBox({ id, title, description, link }: CardProps) {
+    function stableIndexFromId(seed: string | number) {
+        const s = String(seed);
+        let h = 0;
+        for (let i = 0; i < s.length; i++) {
+            h = (h * 31 + s.charCodeAt(i)) | 0;
+        }
+        return Math.abs(h);
+    }
 
-function CardBox({ title, description, link }: CardProps) {
-    const bgColor = colors[Math.floor(Math.random() * colors.length)]
+    const bgColor = colors[stableIndexFromId(id) % colors.length];
     return (
         <Card className="group rounded-none border-2 border-border transition-all duration-300 bg-transparent hover:bg-white/5 hover:border-primary hover:rounded-sm cursor-pointer    ">
             <div className="p-4 flex flex-col h-full justify-between">
