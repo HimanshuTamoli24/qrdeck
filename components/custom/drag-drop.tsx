@@ -7,9 +7,11 @@ import { FileUploader } from "react-drag-drop-files";
 export default function DragAndDrop({setPreviewUrl}: {setPreviewUrl: (url: string | null) => void}) {
   const [file, setFile] = useState<File | null>(null);
 
-  const handleChange = (selectedFile: File) => {
+  const handleChange = (selectedFile: File | File[] | null | undefined) => {
     if (!selectedFile) return;
-    setFile(selectedFile);
+    const pickedFile = Array.isArray(selectedFile) ? selectedFile[0] : selectedFile;
+    if (!pickedFile) return;
+    setFile(pickedFile);
   };
 
   // Generate preview URL safely
