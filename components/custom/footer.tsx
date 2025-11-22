@@ -3,14 +3,12 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { externals, internals } from "@/config/constant";
 
-
-
 export default function Footer() {
   return (
     <footer className="w-full bg-transparent py-14">
       <div className="max-w-6xl mx-auto px-6">
         <div className="border border-border rounded-2xl p-8">
-          <div className="grid grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-12 gap-2 sm:gap-8 items-start bg -amber-300">
 
             {/* Brand Section */}
             <div className="col-span-12 md:col-span-4 space-y-4">
@@ -62,20 +60,21 @@ export default function Footer() {
             </div>
 
             {/* Newsletter */}
-            <div className="col-span-10 sm:col-span-8 md:col-span-4">
+            <div className="col-span-12 sm:col-span-8 md:col-span-4">
               <h4 className="text-sm font-semibold text-primary mb-3">
                 Newsletter
               </h4>
               <p className="text-xs text-muted-foreground mb-3">
                 Get product updates, tips and feature drops.
               </p>
-              <form className="flex items-center gap-2">
+
+              <form className="flex flex-col sm:flex-row gap-2">
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   className="w-full"
                 />
-                <Button >
+                <Button className="w-full sm:w-auto">
                   <Send />
                 </Button>
               </form>
