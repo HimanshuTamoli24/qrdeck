@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/provider/AuthProvider";
+<<<<<<< HEAD
 import QueryClientProvider from "../provider/QueryClientProvider";
 import Header from "@/components/ui/custom/header";
+=======
+import Header from "@/components/custom/header";
+>>>>>>> origin/main
 import { ThemeProviders } from "@/provider/ThemeProvider";
+import QueryClientsProvider from "@/provider/QueryClientsProvider";
+import { Toaster } from "@/components/ui/sonner";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,14 +36,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryClientProvider>
+        <QueryClientsProvider>
           <AuthProvider>
             <ThemeProviders>
             <Header />
+             <Toaster  />
             {children}
             </ThemeProviders>
           </AuthProvider>
-        </QueryClientProvider>
+        </QueryClientsProvider>
+       
 
       </body>
     </html>

@@ -1,13 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { connectDB } from "@/lib/db";
 import { QR } from "@/models/qr.model";
 import { QRUpdateSchema } from "@/schemas/backend";
-interface Params {
-  id: string;
-}
 
 // get request to fetch a qr code by id
-export async function GET(request: Request, { params }: { params: Params }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     await connectDB();
     const { id } = await params;
@@ -20,7 +17,7 @@ export async function GET(request: Request, { params }: { params: Params }) {
 }
 
 // delete request to delete a qr code by id
-export async function DELETE(request: Request, { params }: { params: Params }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     await connectDB();
     const { id } = await params;
@@ -33,7 +30,7 @@ export async function DELETE(request: Request, { params }: { params: Params }) {
 }
 
 //patch  request also here to update textData
-export async function PATCH(request: Request, { params }: { params: Params }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     await connectDB();
     const { id } = await params;

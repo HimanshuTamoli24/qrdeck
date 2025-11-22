@@ -25,5 +25,5 @@ export default withAuth(
 
 // Match protected routes
 export const config = {
-  matcher: ["/", "/dashboard/:path*"], 
+  matcher: [ "/dashboard/:path*"], 
 };

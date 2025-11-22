@@ -1,11 +1,11 @@
 import crypto from "crypto";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { connectDB } from "@/lib/db";
 import QRCode from "qrcode";
 import { QR } from "@/models/qr.model";
 import imagekit from "@/lib/imagekit";
 import { QRCreateSchema } from "@/schemas/backend";
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     await connectDB();
 
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
     await connectDB();
     const qrs = await QR.find().sort({ createdAt: -1 });

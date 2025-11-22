@@ -1,6 +1,6 @@
 "use client";
 
-import DragAndDrop from "@/components/draganddrop";
+import DragAndDrop from "@/components/custom/drag-drop";
 import { Button } from "@/components/ui/button";
 import { ImageKitAbortError, upload } from "@imagekit/next";
 import { X } from "lucide-react";
@@ -15,7 +15,7 @@ export default function PreviewPage() {
     const { data: session } = useSession();
     const abortControllerRef = useRef<AbortController | null>(null);
     const { data: imagekitAuthData } = useImagekitAuthCheck();
-    const { mutateAsync: uploadImage, isLoading, isError } = useCreateQr();
+    const { mutateAsync: uploadImage } = useCreateQr();
     const [uploading, setUploading] = useState(false);
     const handleUpload = async () => {
         if (!previewUrl) return;
